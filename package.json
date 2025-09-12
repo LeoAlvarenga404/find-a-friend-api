@@ -4,7 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts"
+    "dev": "tsx watch src/server.ts",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "vitest run --project e2e",
+    "test:e2e:watch": "vitest --project e2e",
+    "test:unit": "vitest run --project unit",
+    "test:unit:watch": "vitest --project unit"
   },
   "keywords": [],
   "author": "",
@@ -12,7 +20,9 @@
   "type": "commonjs",
   "devDependencies": {
     "@types/node": "^24.3.1",
+    "@types/supertest": "^6.0.3",
     "prisma": "^6.16.1",
+    "supertest": "^7.1.4",
     "tsup": "^8.5.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
