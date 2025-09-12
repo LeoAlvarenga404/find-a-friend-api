@@ -3,6 +3,25 @@ import { UsersRepository } from "../users-repository";
 import { prisma } from "@/lib/prisma";
 
 export class PrismaUsersRepository implements UsersRepository {
+  async changeRoleToOrg(id_user: string): Promise<void> {
+    await prisma.user.update({
+      where: {
+        id_user,
+      },
+      data: {
+        role: "ORG",
+      },
+    });
+  }
+  async findById(id_user: string) {
+    const user = await prisma.user.findFirst({
+      where: {
+        id_user,
+      },
+    });
+
+    return user;
+  }
   async findByEmail(email: string) {
     const user = await prisma.user.findFirst({
       where: {

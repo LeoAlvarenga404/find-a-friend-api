@@ -13,7 +13,7 @@ describe("Register (e2e)", async () => {
   });
 
   it("should be able to register", async () => {
-    const response = await request(app.server).post("/users").send({
+    const response = await request(app.server).post("/register").send({
       name: "Leonardo Prado",
       email: "leonardo@gmail.com",
       password: "123456",
