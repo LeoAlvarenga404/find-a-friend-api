@@ -1,10 +1,23 @@
 import { Prisma, Pet } from "@prisma/client";
-import { OrgsRepository } from "../orgs-repository";
 import { randomUUID } from "node:crypto";
 import { PetsRepository, SearchPetParams } from "../pets-repository";
 
 export class InMemoryPetsRepository implements PetsRepository {
   private pets: Pet[] = [];
+  async findById(id_pet: string) {
+    const pet = this.pets.find((pet) => pet.id_pet === id_pet);
+
+    if (!pet) return null;
+
+    return pet;
+  }
+  async setToAdopted(id_pet: string) {
+    const index = this.pets.findIndex((pet) => pet.id_pet === id_pet);
+
+    if (index >= 0) {
+      this.pets[index].adopted = true;
+    }
+  }
 
   async search(query: SearchPetParams, page: number) {
     if (!query.address || query.address.trim().length <= 0) {
@@ -34,9 +47,10 @@ export class InMemoryPetsRepository implements PetsRepository {
       photo_url,
       address,
       adopted,
+      id_pet,
     } = data;
     const pet = {
-      id_pet: randomUUID(),
+      id_pet: id_pet ?? randomUUID(),
       name,
       org_id,
       age: age ?? null,
