@@ -52,11 +52,12 @@ model Pet {
   org_id       String
   name         String
   about        String?
+  address      String
   age          Age?
   energy_level EnergyLevel?
   photo_url    String?
-
-  org Org @relation(fields: [org_id], references: [id_org])
+  adopted      Boolean      @default(false)
+  org          Org          @relation(fields: [org_id], references: [id_org])
 
   @@map("pets")
 }

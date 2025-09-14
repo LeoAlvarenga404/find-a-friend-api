@@ -1,0 +1,45 @@
+import { PetsRepository } from "@/repositories/pets-repository";
+import { Pet } from "@prisma/client";
+
+interface CreatePetUseCaseRequest {
+  name: string;
+  org_id: string;
+  about?: string;
+  address: string;
+  age?: "CUB" | "ADULT";
+  energy_level?: "LOW" | "MEDIUM" | "HIGH";
+  adopted: boolean;
+  photo_url?: string;
+}
+
+interface CreatePetUseCaseResponse {
+  pet: Pet;
+}
+
+export class CreatePetUseCase {
+  constructor(private petsRepository: PetsRepository) {}
+
+  async execute({
+    name,
+    org_id,
+    about,
+    age,
+    address,
+    energy_level,
+    adopted,
+    photo_url,
+  }: CreatePetUseCaseRequest): Promise<CreatePetUseCaseResponse> {
+    const pet = await this.petsRepository.create({
+      name,
+      org_id,
+      about,
+      age,
+      address,
+      energy_level,
+      adopted,
+      photo_url,
+    });
+
+    return { pet };
+  }
+}
