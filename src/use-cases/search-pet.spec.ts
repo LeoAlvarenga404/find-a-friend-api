@@ -18,7 +18,7 @@ describe("Search Pet", async () => {
       {
         id_pet: "pet-01",
         name: "Pet 1",
-        org_id: "org-1",
+        id_org: "org-1",
         energy_level: "LOW",
         address: "Rua Teste",
         age: "ADULT",
@@ -29,7 +29,7 @@ describe("Search Pet", async () => {
       {
         id_pet: "pet-02",
         name: "Pet 2",
-        org_id: "org-2",
+        id_org: "org-2",
         energy_level: "MEDIUM",
         address: "Rua sem Nome",
         age: "ADULT",
@@ -40,7 +40,7 @@ describe("Search Pet", async () => {
       {
         id_pet: "pet-03",
         name: "Pet 3",
-        org_id: "org-1",
+        id_org: "org-1",
         address: "Rua Teste",
         energy_level: "LOW",
         age: "CUB",
@@ -53,7 +53,7 @@ describe("Search Pet", async () => {
     for (const pet of createPets) {
       await petsRepository.create({
         name: pet.name,
-        org_id: pet.org_id,
+        id_org: pet.id_org,
         energy_level: pet.energy_level,
         age: pet.age,
         adopted: pet.adopted,
@@ -97,7 +97,7 @@ describe("Search Pet", async () => {
       {
         id_pet: "pet-01",
         name: "Pet 1",
-        org_id: "org-1",
+        id_org: "org-1",
         energy_level: "LOW",
         address: "Rua Teste",
         age: "ADULT",
@@ -108,7 +108,7 @@ describe("Search Pet", async () => {
       {
         id_pet: "pet-02",
         name: "Pet 2",
-        org_id: "org-2",
+        id_org: "org-2",
         energy_level: "MEDIUM",
         address: "Rua sem Nome",
         age: "ADULT",
@@ -121,7 +121,7 @@ describe("Search Pet", async () => {
     for (const pet of createPets) {
       await petsRepository.create({
         name: pet.name,
-        org_id: pet.org_id,
+        id_org: pet.id_org,
         energy_level: pet.energy_level,
         age: pet.age,
         adopted: pet.adopted,

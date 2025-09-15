@@ -3,13 +3,13 @@ import { Pet } from "@prisma/client";
 
 interface CreatePetUseCaseRequest {
   name: string;
-  org_id: string;
-  about?: string;
+  id_org: string;
+  about?: string | null;
   address: string;
   age?: "CUB" | "ADULT";
   energy_level?: "LOW" | "MEDIUM" | "HIGH";
   adopted: boolean;
-  photo_url?: string;
+  photo_url?: string | null;
 }
 
 interface CreatePetUseCaseResponse {
@@ -21,7 +21,7 @@ export class CreatePetUseCase {
 
   async execute({
     name,
-    org_id,
+    id_org,
     about,
     age,
     address,
@@ -31,7 +31,7 @@ export class CreatePetUseCase {
   }: CreatePetUseCaseRequest): Promise<CreatePetUseCaseResponse> {
     const pet = await this.petsRepository.create({
       name,
-      org_id,
+      id_org,
       about,
       age,
       address,

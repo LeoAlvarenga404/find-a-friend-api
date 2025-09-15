@@ -49,7 +49,7 @@ enum EnergyLevel {
 
 model Pet {
   id_pet       String       @id @default(uuid())
-  org_id       String
+  id_org       String
   name         String
   about        String?
   address      String
@@ -57,7 +57,7 @@ model Pet {
   energy_level EnergyLevel?
   photo_url    String?
   adopted      Boolean      @default(false)
-  org          Org          @relation(fields: [org_id], references: [id_org])
+  org          Org          @relation(fields: [id_org], references: [id_org])
 
   @@map("pets")
 }

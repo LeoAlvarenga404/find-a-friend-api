@@ -15,7 +15,7 @@ describe("Create Pet", async () => {
   it("should be able to create a pet", async () => {
     const { pet } = await sut.execute({
       name: "Pet Teste",
-      org_id: "org-01",
+      id_org: "org-01",
       address: "Rua Teste...",
       energy_level: "MEDIUM",
       about: "description...",

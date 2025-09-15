@@ -15,7 +15,7 @@ describe("Set status pet to adopted", async () => {
     await petsRepository.create({
       id_pet: "pet-01",
       name: "Pet 1",
-      org_id: "org-1",
+      id_org: "org-1",
       energy_level: "LOW",
       address: "Rua Teste",
       age: "ADULT",

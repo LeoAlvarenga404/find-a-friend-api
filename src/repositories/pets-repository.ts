@@ -5,8 +5,8 @@ export interface SearchPetParams {
   name?: string;
   about?: string;
   adopted?: boolean;
-  age?: string;
-  energy_level?: string;
+  age?: "CUB" | "ADULT";
+  energy_level?: "HIGH" | "LOW" | "MEDIUM";
 }
 
 export interface PetsRepository {
